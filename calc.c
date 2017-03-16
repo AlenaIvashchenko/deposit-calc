@@ -12,4 +12,12 @@
         scanf("%d", &duration);
         printf("Enter investent amount: ");
         scanf("%f", &investment );
+
+        getInput(&duration, &investment);
+        perform(&duration, &investment);
+        printf("Duration: %d \nInvestment: %f", duration, investment);
+        printf("\n");
+        
+        
+        return 0;
 } 
