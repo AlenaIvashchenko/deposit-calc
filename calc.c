@@ -21,3 +21,9 @@
         
         return 0;
 } 
+
+    void getInput(int* dur, float* amount) {
+        if(*dur < 0 || *dur > 365 || *amount < 0.0) {
+        getInput(dur, amount);
+       }
+    }
