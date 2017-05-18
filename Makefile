@@ -14,18 +14,18 @@ DIT = build/test1
 DAT = test
 DUT = bin/deposit-calc-test3
 
-all: $(DUR)/$(EXECUTABLE) 
-$(DIR)/main.o: $(DAR)/main.c 
-	@if [ ! -d $(DIR) ] ; then echo "creating $(DIR)" ; mkdir build ; mkdir build/src; fi
-	$(CC) $(CFLAGS) -c $(DAR)/main.c -o $(DIR)/main.o 
+all: bin/deposit-calc1/file 
+build/main.o: src/main.c 
+	mkdir build -p
+	gcc -Wall -Werror -c -o build/main.o src/main.c -MP -MMD
 
-$(DIR)/deposit.o: $(DAR)/deposit.c
-	@if [ ! -d $(DIR) ] ; then echo "creating $(DIR)" ; mkdir build ; mkdir build/src; fi
-	$(CC) $(CFLAGS) -c $(DAR)/deposit.c -o $(DIR)/deposit.o 
+build/deposit.o: src/deposit.c
+	mkdir build -p
+	gcc -Wall -Werror -c -o build/deposit.o src/deposit.c -MP -MMD
 
-$(DUR)/$(EXECUTABLE): $(DIR)/main.o $(DIR)/deposit.o
-	@if [ ! -d $(DUR) ] ; then echo "creating $(DUR)" ; mkdir bin ; mkdir bin/deposit-calc1; fi
-	$(CC) $(DIR)/main.o $(DIR)/deposit.o -o $(DUR)/$(EXECUTABLE) 
+bin/deposit-calc/file: build/main.o build/deposit.o
+	mkdir bin -p
+	gcc -Wall -Werror -o bin/deposit-calc build/deposit.o build/main.o
 
  
 test: $(DUT)/$(EXECUTABLE_TEST)
