@@ -1,4 +1,4 @@
 language: c
 compiler: gcc
-script: make test && bin/deposit-calc-test
+script: make Test1 && bin/deposit-calc-test
 
